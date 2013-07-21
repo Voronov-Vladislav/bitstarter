@@ -1,102 +1,316 @@
-<!DOCTYPE>
+Last login: Sun Jul 21 21:47:18 on ttys000
+macbook:~ macbook$ ssh aws1
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-virtual x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+  System information as of Sun Jul 21 18:10:06 UTC 2013
+
+  System load:  0.0               Processes:           58
+  Usage of /:   18.4% of 7.87GB   Users logged in:     0
+  Memory usage: 7%                IP address for eth0: 10.83.95.184
+  Swap usage:   0%
+
+  Graph this data and manage this system at https://landscape.canonical.com/
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+  Use Juju to deploy your cloud instances and workloads:
+    https://juju.ubuntu.com/#cloud-precise
+
+51 packages can be updated.
+22 updates are security updates.
+
+Last login: Sun Jul 21 17:50:26 2013 from 79.164.150.91
+[ubuntu@ip-10-83-95-184:~]$cd bitstarter
+[ubuntu@ip-10-83-95-184:~/bitstarter]$cat web.js
+var express = require('express');
+var fs = require('fs');
+var htmlfile = "index.html";
+
+var app = express.createServer(express.logger());
+
+app.get('/', function(request, response) {
+  var html = fs.readFileSync(htmlfile).toString();
+  response.send(html);
+});
+
+var port = process.env.PORT || 8080;
+app.listen(port, function() {
+  console.log("Listening on " + port);
+});
+[ubuntu@ip-10-83-95-184:~/bitstarter]$node web.js
+
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'express'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/home/ubuntu/bitstarter/web.js:1:77)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Function.Module.runMain (module.js:497:10)
+[ubuntu@ip-10-83-95-184:~/bitstarter]$npm link express
+npm http GET https://registry.npmjs.org/express
+npm http 200 https://registry.npmjs.org/express
+npm http GET https://registry.npmjs.org/express/-/express-3.3.4.tgz
+npm http 200 https://registry.npmjs.org/express/-/express-3.3.4.tgz
+npm ERR! Error: EACCES, mkdir '/usr/lib/node_modules/express'
+npm ERR!  { [Error: EACCES, mkdir '/usr/lib/node_modules/express']
+npm ERR!   errno: 3,
+npm ERR!   code: 'EACCES',
+npm ERR!   path: '/usr/lib/node_modules/express',
+npm ERR!   fstream_type: 'Directory',
+npm ERR!   fstream_path: '/usr/lib/node_modules/express',
+npm ERR!   fstream_class: 'DirWriter',
+npm ERR!   fstream_stack: 
+npm ERR!    [ '/usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+npm ERR!      '/usr/lib/node_modules/npm/node_modules/mkdirp/index.js:37:53',
+npm ERR!      'Object.oncomplete (fs.js:107:15)' ] }
+npm ERR! 
+npm ERR! Please try running this command again as root/Administrator.
+
+npm ERR! System Linux 3.2.0-40-virtual
+npm ERR! command "/usr/bin/node" "/usr/bin/npm" "link" "express"
+npm ERR! cwd /home/ubuntu/bitstarter
+npm ERR! node -v v0.10.12
+npm ERR! npm -v 1.2.32
+npm ERR! path /usr/lib/node_modules/express
+npm ERR! fstream_path /usr/lib/node_modules/express
+npm ERR! fstream_type Directory
+npm ERR! fstream_class DirWriter
+npm ERR! code EACCES
+npm ERR! errno 3
+npm ERR! stack Error: EACCES, mkdir '/usr/lib/node_modules/express'
+npm ERR! fstream_stack /usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+npm ERR! fstream_stack /usr/lib/node_modules/npm/node_modules/mkdirp/index.js:37:53
+npm ERR! fstream_stack Object.oncomplete (fs.js:107:15)
+npm ERR! 
+npm ERR! Additional logging details can be found in:
+npm ERR!     /home/ubuntu/bitstarter/npm-debug.log
+npm ERR! not ok code 0
+[ubuntu@ip-10-83-95-184:~/bitstarter]$node web.js
+
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'express'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/home/ubuntu/bitstarter/web.js:1:77)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Function.Module.runMain (module.js:497:10)
+[ubuntu@ip-10-83-95-184:~/bitstarter]$npm link express
+npm http GET https://registry.npmjs.org/express
+npm http 304 https://registry.npmjs.org/express
+npm ERR! Error: EACCES, mkdir '/usr/lib/node_modules/express'
+npm ERR!  { [Error: EACCES, mkdir '/usr/lib/node_modules/express']
+npm ERR!   errno: 3,
+npm ERR!   code: 'EACCES',
+npm ERR!   path: '/usr/lib/node_modules/express',
+npm ERR!   fstream_type: 'Directory',
+npm ERR!   fstream_path: '/usr/lib/node_modules/express',
+npm ERR!   fstream_class: 'DirWriter',
+npm ERR!   fstream_stack: 
+npm ERR!    [ '/usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+npm ERR!      '/usr/lib/node_modules/npm/node_modules/mkdirp/index.js:37:53',
+npm ERR!      'Object.oncomplete (fs.js:107:15)' ] }
+npm ERR! 
+npm ERR! Please try running this command again as root/Administrator.
+
+npm ERR! System Linux 3.2.0-40-virtual
+npm ERR! command "/usr/bin/node" "/usr/bin/npm" "link" "express"
+npm ERR! cwd /home/ubuntu/bitstarter
+npm ERR! node -v v0.10.12
+npm ERR! npm -v 1.2.32
+npm ERR! path /usr/lib/node_modules/express
+npm ERR! fstream_path /usr/lib/node_modules/express
+npm ERR! fstream_type Directory
+npm ERR! fstream_class DirWriter
+npm ERR! code EACCES
+npm ERR! errno 3
+npm ERR! stack Error: EACCES, mkdir '/usr/lib/node_modules/express'
+npm ERR! fstream_stack /usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+npm ERR! fstream_stack /usr/lib/node_modules/npm/node_modules/mkdirp/index.js:37:53
+npm ERR! fstream_stack Object.oncomplete (fs.js:107:15)
+npm ERR! 
+npm ERR! Additional logging details can be found in:
+npm ERR!     /home/ubuntu/bitstarter/npm-debug.log
+npm ERR! not ok code 0
+[ubuntu@ip-10-83-95-184:~/bitstarter]$node web.js
+
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'express'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/home/ubuntu/bitstarter/web.js:1:77)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Function.Module.runMain (module.js:497:10)
+[ubuntu@ip-10-83-95-184:~/bitstarter]$node
+> 2+3
+5
+> exit
+ReferenceError: exit is not defined
+    at repl:1:2
+    at REPLServer.self.eval (repl.js:110:21)
+    at Interface.<anonymous> (repl.js:239:12)
+    at Interface.EventEmitter.emit (events.js:95:17)
+    at Interface._onLine (readline.js:202:10)
+    at Interface.<anonymous> (readline.js:322:12)
+    at Array.forEach (native)
+    at Interface._normalWrite (readline.js:321:11)
+    at ReadStream.ondata (readline.js:91:10)
+    at ReadStream.EventEmitter.emit (events.js:95:17)
+> exit
+ReferenceError: exit is not defined
+    at repl:1:2
+    at REPLServer.self.eval (repl.js:110:21)
+    at Interface.<anonymous> (repl.js:239:12)
+    at Interface.EventEmitter.emit (events.js:95:17)
+    at Interface._onLine (readline.js:202:10)
+    at Interface.<anonymous> (readline.js:322:12)
+    at Array.forEach (native)
+    at Interface._normalWrite (readline.js:321:11)
+    at ReadStream.ondata (readline.js:91:10)
+    at ReadStream.EventEmitter.emit (events.js:95:17)
+>   
+[ubuntu@ip-10-83-95-184:~/bitstarter]$node web.js
+
+module.js:340
+    throw err;
+          ^
+Error: Cannot find module 'express'
+    at Function.Module._resolveFilename (module.js:338:15)
+    at Function.Module._load (module.js:280:25)
+    at Module.require (module.js:364:17)
+    at require (module.js:380:17)
+    at Object.<anonymous> (/home/ubuntu/bitstarter/web.js:1:77)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+    at Function.Module.runMain (module.js:497:10)
+[ubuntu@ip-10-83-95-184:~/bitstarter]$npm install
+npm WARN package.json node-js-sample@0.0.1 No readme data.
+npm http GET https://registry.npmjs.org/express
+npm http 304 https://registry.npmjs.org/express
+npm http GET https://registry.npmjs.org/express/-/express-2.5.11.tgz
+npm http 200 https://registry.npmjs.org/express/-/express-2.5.11.tgz
+npm http GET https://registry.npmjs.org/connect
+npm http GET https://registry.npmjs.org/mime/1.2.4
+npm http GET https://registry.npmjs.org/qs
+npm http GET https://registry.npmjs.org/mkdirp/0.3.0
+npm http 200 https://registry.npmjs.org/mime/1.2.4
+npm http GET https://registry.npmjs.org/mime/-/mime-1.2.4.tgz
+npm http 200 https://registry.npmjs.org/mkdirp/0.3.0
+npm http GET https://registry.npmjs.org/mkdirp/-/mkdirp-0.3.0.tgz
+npm http 200 https://registry.npmjs.org/qs
+npm http GET https://registry.npmjs.org/qs/-/qs-0.4.2.tgz
+npm http 200 https://registry.npmjs.org/mime/-/mime-1.2.4.tgz
+npm http 200 https://registry.npmjs.org/mkdirp/-/mkdirp-0.3.0.tgz
+npm http 200 https://registry.npmjs.org/connect
+npm http GET https://registry.npmjs.org/connect/-/connect-1.9.2.tgz
+npm http 200 https://registry.npmjs.org/qs/-/qs-0.4.2.tgz
+npm http 200 https://registry.npmjs.org/connect/-/connect-1.9.2.tgz
+npm WARN package.json connect@1.9.2 No readme data.
+npm http GET https://registry.npmjs.org/formidable
+npm http 200 https://registry.npmjs.org/formidable
+npm http GET https://registry.npmjs.org/formidable/-/formidable-1.0.14.tgz
+npm http 200 https://registry.npmjs.org/formidable/-/formidable-1.0.14.tgz
+npm WARN package.json cheerio-select@0.0.3 No repository field.
+express@2.5.11 node_modules/express
+├── qs@0.4.2
+├── mime@1.2.4
+├── mkdirp@0.3.0
+└── connect@1.9.2 (formidable@1.0.14)
+[ubuntu@ip-10-83-95-184:~/bitstarter]$node web.js
+Listening on 8080
+79.164.150.91 - - [Sun, 21 Jul 2013 18:20:29 GMT] "GET / HTTP/1.1" 200 2476 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:22.0) Gecko/20100101 Firefox/22.0"
+79.164.150.91 - - [Sun, 21 Jul 2013 18:20:30 GMT] "GET /favicon.ico HTTP/1.1" 404 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:22.0) Gecko/20100101 Firefox/22.0"
+79.164.150.91 - - [Sun, 21 Jul 2013 18:20:30 GMT] "GET /favicon.ico HTTP/1.1" 404 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:22.0) Gecko/20100101 Firefox/22.0"
+[ubuntu@ip-10-83-95-184:~/bitstarter]$
+[ubuntu@ip-10-83-95-184:~/bitstarter]$exit
+logout
+Connection to ec2-50-16-116-164.compute-1.amazonaws.com closed.
+macbook:~ macbook$ cd dropbox
+macbook:dropbox macbook$ cd coursera
+macbook:coursera macbook$ ls
+Startup Engineering 2013  coursera.vlad@gmail.com.txt
+macbook:coursera macbook$ cd Startup Engineering 2013
+-bash: cd: Startup: No such file or directory
+macbook:coursera macbook$ cd StartupEngineering2013
+-bash: cd: StartupEngineering2013: No such file or directory
+macbook:coursera macbook$ cd ..
+macbook:dropbox macbook$ scp bitstarter-hw4.html aws1:~/
+bitstarter-hw4.html                           100%   11KB  11.0KB/s   00:00    
+macbook:dropbox macbook$ scp bitstarter-hw4.html aws1:~/bitstarter
+bitstarter-hw4.html                           100%   11KB  11.0KB/s   00:00    
+macbook:dropbox macbook$ ssh aws1
+Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-virtual x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+  System information as of Sun Jul 21 18:39:48 UTC 2013
+
+  System load:  0.0               Processes:           58
+  Usage of /:   18.5% of 7.87GB   Users logged in:     0
+  Memory usage: 8%                IP address for eth0: 10.83.95.184
+  Swap usage:   0%
+
+  Graph this data and manage this system at https://landscape.canonical.com/
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+  Use Juju to deploy your cloud instances and workloads:
+    https://juju.ubuntu.com/#cloud-precise
+
+51 packages can be updated.
+22 updates are security updates.
+
+Last login: Sun Jul 21 18:10:06 2013 from 79.164.150.91
+[ubuntu@ip-10-83-95-184:~]$nano bitstarter-hw4.html
+
+  GNU nano 2.2.6           File: bitstarter-hw4.html                            
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>My First Bitstarter</title>
     <meta charset="utf-8">
-    <link type="text/css" rel="stylesheet"
-          href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+    <title>My First Bitstarter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%$
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.$
+    <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%$
+    <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.$
+    <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstr$
+    <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,3$
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400i$
+          rel="stylesheet" type="text/css">
     <style type="text/css">
-      body {
-        padding-top: 20px;
-        padding-bottom: 40px;
-      }
-      .container {
-        width: 960px;
-      }
-      p.lead {
-        padding-top: 15px;
-      }
-      .navigation, .pitch, .section1, .section2, .faq, .footer {  
-        padding: 10px 0px 10px 0px;
-      }
-      .video, .thermometer, .order, .social {
-        border: 1px dotted;
-        text-align: center;
-      }
-      .video {
-        /* Internal borders have 1px width, thus need to add 4 x 1px to 120px. */
-        height: 124px;
-        line-height: 124px;
-      }
-      .thermometer, .order, .social {
-        /* line-height to vertically center: http://phogz.net/css/vertical-align/index.html */
-        height: 40px;
-        line-height: 40px;
-      }
-      div.row {
-        border: 1px solid;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row navigation">
-        <div class="span2 logo">
-          Logo
-        </div>
-        <div class="span6 blank">
-          Blank
-        </div>
-        <div class="span4 about">
-          About
-        </div>
-      </div>
-      <div class="row heading">
-        <div class="span12">
-          <h1>Bitstarter Title</h1>
-        </div>
-      </div>
-      <div class="row subheading">
-        <div class="span12">
-          <p class="lead">This is my first bitstarter project.</p>
-        </div>
-      </div>
-      <div class="row pitch">
-        <div class="span6 video">
-          Video
-        </div>
-        <div class="span6">
-          <div class="thermometer">
-            Thermometer
-          </div>
-          <div class="order">
-            Order
-          </div>
-          <div class="social">
-            Social
-          </div>
-        </div>
-      </div>
-      <div class="row section1">
-        <div class="span12">
-          Marketing Section 1
-        </div>
-      </div>
-      <div class="row section2">
-        <div class="span12">
-          Marketing Section 2
-        </div>
-      </div>
-      <div class="row faq">
-        <div class="span12">
-          FAQ
-        </div>
-      </div>
-      <div class="row footer">
-        <div class="span12">
-          Footer          
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+
+      /* Large desktop */
+      @media (min-width: 980px) {
+        body {
+                               [ Read 294 lines ]
+^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Page ^K Cut Text  ^C Cur Pos
+^X Exit      ^J Justify   ^W Where Is  ^V Next Page ^U UnCut Text^T To Spell
+
