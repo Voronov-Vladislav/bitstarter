@@ -1,316 +1,294 @@
-Last login: Sun Jul 21 21:47:18 on ttys000
-macbook:~ macbook$ ssh aws1
-Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-virtual x86_64)
-
- * Documentation:  https://help.ubuntu.com/
-
-  System information as of Sun Jul 21 18:10:06 UTC 2013
-
-  System load:  0.0               Processes:           58
-  Usage of /:   18.4% of 7.87GB   Users logged in:     0
-  Memory usage: 7%                IP address for eth0: 10.83.95.184
-  Swap usage:   0%
-
-  Graph this data and manage this system at https://landscape.canonical.com/
-
-  Get cloud support with Ubuntu Advantage Cloud Guest:
-    http://www.ubuntu.com/business/services/cloud
-
-  Use Juju to deploy your cloud instances and workloads:
-    https://juju.ubuntu.com/#cloud-precise
-
-51 packages can be updated.
-22 updates are security updates.
-
-Last login: Sun Jul 21 17:50:26 2013 from 79.164.150.91
-[ubuntu@ip-10-83-95-184:~]$cd bitstarter
-[ubuntu@ip-10-83-95-184:~/bitstarter]$cat web.js
-var express = require('express');
-var fs = require('fs');
-var htmlfile = "index.html";
-
-var app = express.createServer(express.logger());
-
-app.get('/', function(request, response) {
-  var html = fs.readFileSync(htmlfile).toString();
-  response.send(html);
-});
-
-var port = process.env.PORT || 8080;
-app.listen(port, function() {
-  console.log("Listening on " + port);
-});
-[ubuntu@ip-10-83-95-184:~/bitstarter]$node web.js
-
-module.js:340
-    throw err;
-          ^
-Error: Cannot find module 'express'
-    at Function.Module._resolveFilename (module.js:338:15)
-    at Function.Module._load (module.js:280:25)
-    at Module.require (module.js:364:17)
-    at require (module.js:380:17)
-    at Object.<anonymous> (/home/ubuntu/bitstarter/web.js:1:77)
-    at Module._compile (module.js:456:26)
-    at Object.Module._extensions..js (module.js:474:10)
-    at Module.load (module.js:356:32)
-    at Function.Module._load (module.js:312:12)
-    at Function.Module.runMain (module.js:497:10)
-[ubuntu@ip-10-83-95-184:~/bitstarter]$npm link express
-npm http GET https://registry.npmjs.org/express
-npm http 200 https://registry.npmjs.org/express
-npm http GET https://registry.npmjs.org/express/-/express-3.3.4.tgz
-npm http 200 https://registry.npmjs.org/express/-/express-3.3.4.tgz
-npm ERR! Error: EACCES, mkdir '/usr/lib/node_modules/express'
-npm ERR!  { [Error: EACCES, mkdir '/usr/lib/node_modules/express']
-npm ERR!   errno: 3,
-npm ERR!   code: 'EACCES',
-npm ERR!   path: '/usr/lib/node_modules/express',
-npm ERR!   fstream_type: 'Directory',
-npm ERR!   fstream_path: '/usr/lib/node_modules/express',
-npm ERR!   fstream_class: 'DirWriter',
-npm ERR!   fstream_stack: 
-npm ERR!    [ '/usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
-npm ERR!      '/usr/lib/node_modules/npm/node_modules/mkdirp/index.js:37:53',
-npm ERR!      'Object.oncomplete (fs.js:107:15)' ] }
-npm ERR! 
-npm ERR! Please try running this command again as root/Administrator.
-
-npm ERR! System Linux 3.2.0-40-virtual
-npm ERR! command "/usr/bin/node" "/usr/bin/npm" "link" "express"
-npm ERR! cwd /home/ubuntu/bitstarter
-npm ERR! node -v v0.10.12
-npm ERR! npm -v 1.2.32
-npm ERR! path /usr/lib/node_modules/express
-npm ERR! fstream_path /usr/lib/node_modules/express
-npm ERR! fstream_type Directory
-npm ERR! fstream_class DirWriter
-npm ERR! code EACCES
-npm ERR! errno 3
-npm ERR! stack Error: EACCES, mkdir '/usr/lib/node_modules/express'
-npm ERR! fstream_stack /usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
-npm ERR! fstream_stack /usr/lib/node_modules/npm/node_modules/mkdirp/index.js:37:53
-npm ERR! fstream_stack Object.oncomplete (fs.js:107:15)
-npm ERR! 
-npm ERR! Additional logging details can be found in:
-npm ERR!     /home/ubuntu/bitstarter/npm-debug.log
-npm ERR! not ok code 0
-[ubuntu@ip-10-83-95-184:~/bitstarter]$node web.js
-
-module.js:340
-    throw err;
-          ^
-Error: Cannot find module 'express'
-    at Function.Module._resolveFilename (module.js:338:15)
-    at Function.Module._load (module.js:280:25)
-    at Module.require (module.js:364:17)
-    at require (module.js:380:17)
-    at Object.<anonymous> (/home/ubuntu/bitstarter/web.js:1:77)
-    at Module._compile (module.js:456:26)
-    at Object.Module._extensions..js (module.js:474:10)
-    at Module.load (module.js:356:32)
-    at Function.Module._load (module.js:312:12)
-    at Function.Module.runMain (module.js:497:10)
-[ubuntu@ip-10-83-95-184:~/bitstarter]$npm link express
-npm http GET https://registry.npmjs.org/express
-npm http 304 https://registry.npmjs.org/express
-npm ERR! Error: EACCES, mkdir '/usr/lib/node_modules/express'
-npm ERR!  { [Error: EACCES, mkdir '/usr/lib/node_modules/express']
-npm ERR!   errno: 3,
-npm ERR!   code: 'EACCES',
-npm ERR!   path: '/usr/lib/node_modules/express',
-npm ERR!   fstream_type: 'Directory',
-npm ERR!   fstream_path: '/usr/lib/node_modules/express',
-npm ERR!   fstream_class: 'DirWriter',
-npm ERR!   fstream_stack: 
-npm ERR!    [ '/usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
-npm ERR!      '/usr/lib/node_modules/npm/node_modules/mkdirp/index.js:37:53',
-npm ERR!      'Object.oncomplete (fs.js:107:15)' ] }
-npm ERR! 
-npm ERR! Please try running this command again as root/Administrator.
-
-npm ERR! System Linux 3.2.0-40-virtual
-npm ERR! command "/usr/bin/node" "/usr/bin/npm" "link" "express"
-npm ERR! cwd /home/ubuntu/bitstarter
-npm ERR! node -v v0.10.12
-npm ERR! npm -v 1.2.32
-npm ERR! path /usr/lib/node_modules/express
-npm ERR! fstream_path /usr/lib/node_modules/express
-npm ERR! fstream_type Directory
-npm ERR! fstream_class DirWriter
-npm ERR! code EACCES
-npm ERR! errno 3
-npm ERR! stack Error: EACCES, mkdir '/usr/lib/node_modules/express'
-npm ERR! fstream_stack /usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
-npm ERR! fstream_stack /usr/lib/node_modules/npm/node_modules/mkdirp/index.js:37:53
-npm ERR! fstream_stack Object.oncomplete (fs.js:107:15)
-npm ERR! 
-npm ERR! Additional logging details can be found in:
-npm ERR!     /home/ubuntu/bitstarter/npm-debug.log
-npm ERR! not ok code 0
-[ubuntu@ip-10-83-95-184:~/bitstarter]$node web.js
-
-module.js:340
-    throw err;
-          ^
-Error: Cannot find module 'express'
-    at Function.Module._resolveFilename (module.js:338:15)
-    at Function.Module._load (module.js:280:25)
-    at Module.require (module.js:364:17)
-    at require (module.js:380:17)
-    at Object.<anonymous> (/home/ubuntu/bitstarter/web.js:1:77)
-    at Module._compile (module.js:456:26)
-    at Object.Module._extensions..js (module.js:474:10)
-    at Module.load (module.js:356:32)
-    at Function.Module._load (module.js:312:12)
-    at Function.Module.runMain (module.js:497:10)
-[ubuntu@ip-10-83-95-184:~/bitstarter]$node
-> 2+3
-5
-> exit
-ReferenceError: exit is not defined
-    at repl:1:2
-    at REPLServer.self.eval (repl.js:110:21)
-    at Interface.<anonymous> (repl.js:239:12)
-    at Interface.EventEmitter.emit (events.js:95:17)
-    at Interface._onLine (readline.js:202:10)
-    at Interface.<anonymous> (readline.js:322:12)
-    at Array.forEach (native)
-    at Interface._normalWrite (readline.js:321:11)
-    at ReadStream.ondata (readline.js:91:10)
-    at ReadStream.EventEmitter.emit (events.js:95:17)
-> exit
-ReferenceError: exit is not defined
-    at repl:1:2
-    at REPLServer.self.eval (repl.js:110:21)
-    at Interface.<anonymous> (repl.js:239:12)
-    at Interface.EventEmitter.emit (events.js:95:17)
-    at Interface._onLine (readline.js:202:10)
-    at Interface.<anonymous> (readline.js:322:12)
-    at Array.forEach (native)
-    at Interface._normalWrite (readline.js:321:11)
-    at ReadStream.ondata (readline.js:91:10)
-    at ReadStream.EventEmitter.emit (events.js:95:17)
->   
-[ubuntu@ip-10-83-95-184:~/bitstarter]$node web.js
-
-module.js:340
-    throw err;
-          ^
-Error: Cannot find module 'express'
-    at Function.Module._resolveFilename (module.js:338:15)
-    at Function.Module._load (module.js:280:25)
-    at Module.require (module.js:364:17)
-    at require (module.js:380:17)
-    at Object.<anonymous> (/home/ubuntu/bitstarter/web.js:1:77)
-    at Module._compile (module.js:456:26)
-    at Object.Module._extensions..js (module.js:474:10)
-    at Module.load (module.js:356:32)
-    at Function.Module._load (module.js:312:12)
-    at Function.Module.runMain (module.js:497:10)
-[ubuntu@ip-10-83-95-184:~/bitstarter]$npm install
-npm WARN package.json node-js-sample@0.0.1 No readme data.
-npm http GET https://registry.npmjs.org/express
-npm http 304 https://registry.npmjs.org/express
-npm http GET https://registry.npmjs.org/express/-/express-2.5.11.tgz
-npm http 200 https://registry.npmjs.org/express/-/express-2.5.11.tgz
-npm http GET https://registry.npmjs.org/connect
-npm http GET https://registry.npmjs.org/mime/1.2.4
-npm http GET https://registry.npmjs.org/qs
-npm http GET https://registry.npmjs.org/mkdirp/0.3.0
-npm http 200 https://registry.npmjs.org/mime/1.2.4
-npm http GET https://registry.npmjs.org/mime/-/mime-1.2.4.tgz
-npm http 200 https://registry.npmjs.org/mkdirp/0.3.0
-npm http GET https://registry.npmjs.org/mkdirp/-/mkdirp-0.3.0.tgz
-npm http 200 https://registry.npmjs.org/qs
-npm http GET https://registry.npmjs.org/qs/-/qs-0.4.2.tgz
-npm http 200 https://registry.npmjs.org/mime/-/mime-1.2.4.tgz
-npm http 200 https://registry.npmjs.org/mkdirp/-/mkdirp-0.3.0.tgz
-npm http 200 https://registry.npmjs.org/connect
-npm http GET https://registry.npmjs.org/connect/-/connect-1.9.2.tgz
-npm http 200 https://registry.npmjs.org/qs/-/qs-0.4.2.tgz
-npm http 200 https://registry.npmjs.org/connect/-/connect-1.9.2.tgz
-npm WARN package.json connect@1.9.2 No readme data.
-npm http GET https://registry.npmjs.org/formidable
-npm http 200 https://registry.npmjs.org/formidable
-npm http GET https://registry.npmjs.org/formidable/-/formidable-1.0.14.tgz
-npm http 200 https://registry.npmjs.org/formidable/-/formidable-1.0.14.tgz
-npm WARN package.json cheerio-select@0.0.3 No repository field.
-express@2.5.11 node_modules/express
-├── qs@0.4.2
-├── mime@1.2.4
-├── mkdirp@0.3.0
-└── connect@1.9.2 (formidable@1.0.14)
-[ubuntu@ip-10-83-95-184:~/bitstarter]$node web.js
-Listening on 8080
-79.164.150.91 - - [Sun, 21 Jul 2013 18:20:29 GMT] "GET / HTTP/1.1" 200 2476 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:22.0) Gecko/20100101 Firefox/22.0"
-79.164.150.91 - - [Sun, 21 Jul 2013 18:20:30 GMT] "GET /favicon.ico HTTP/1.1" 404 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:22.0) Gecko/20100101 Firefox/22.0"
-79.164.150.91 - - [Sun, 21 Jul 2013 18:20:30 GMT] "GET /favicon.ico HTTP/1.1" 404 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:22.0) Gecko/20100101 Firefox/22.0"
-[ubuntu@ip-10-83-95-184:~/bitstarter]$
-[ubuntu@ip-10-83-95-184:~/bitstarter]$exit
-logout
-Connection to ec2-50-16-116-164.compute-1.amazonaws.com closed.
-macbook:~ macbook$ cd dropbox
-macbook:dropbox macbook$ cd coursera
-macbook:coursera macbook$ ls
-Startup Engineering 2013  coursera.vlad@gmail.com.txt
-macbook:coursera macbook$ cd Startup Engineering 2013
--bash: cd: Startup: No such file or directory
-macbook:coursera macbook$ cd StartupEngineering2013
--bash: cd: StartupEngineering2013: No such file or directory
-macbook:coursera macbook$ cd ..
-macbook:dropbox macbook$ scp bitstarter-hw4.html aws1:~/
-bitstarter-hw4.html                           100%   11KB  11.0KB/s   00:00    
-macbook:dropbox macbook$ scp bitstarter-hw4.html aws1:~/bitstarter
-bitstarter-hw4.html                           100%   11KB  11.0KB/s   00:00    
-macbook:dropbox macbook$ ssh aws1
-Welcome to Ubuntu 12.04.2 LTS (GNU/Linux 3.2.0-40-virtual x86_64)
-
- * Documentation:  https://help.ubuntu.com/
-
-  System information as of Sun Jul 21 18:39:48 UTC 2013
-
-  System load:  0.0               Processes:           58
-  Usage of /:   18.5% of 7.87GB   Users logged in:     0
-  Memory usage: 8%                IP address for eth0: 10.83.95.184
-  Swap usage:   0%
-
-  Graph this data and manage this system at https://landscape.canonical.com/
-
-  Get cloud support with Ubuntu Advantage Cloud Guest:
-    http://www.ubuntu.com/business/services/cloud
-
-  Use Juju to deploy your cloud instances and workloads:
-    https://juju.ubuntu.com/#cloud-precise
-
-51 packages can be updated.
-22 updates are security updates.
-
-Last login: Sun Jul 21 18:10:06 2013 from 79.164.150.91
-[ubuntu@ip-10-83-95-184:~]$nano bitstarter-hw4.html
-
-  GNU nano 2.2.6           File: bitstarter-hw4.html                            
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <title>My First Bitstarter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%$
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.$
-    <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%$
-    <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.$
-    <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstr$
-    <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,3$
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400i$
+    <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-combined.no-icons.min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css">
+    <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fsocial-buttons.css">    
+    <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
+    <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js"></script>
+    <link href="http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700,800" 
           rel="stylesheet" type="text/css">
     <style type="text/css">
 
       /* Large desktop */
-      @media (min-width: 980px) {
+      @media (min-width: 980px) { 
         body {
-                               [ Read 294 lines ]
-^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Page ^K Cut Text  ^C Cur Pos
-^X Exit      ^J Justify   ^W Where Is  ^V Next Page ^U UnCut Text^T To Spell
+         padding-top: 60px;
+        }
+       .linediv-l {
+         border-right: 1px white solid;
+        }
+       .linediv-r {
+         border-left: 1px white solid;
+       }
+      }
 
+      /* Landscape phones and down */
+      @media (max-width: 480px) { 
+       .copy {
+         padding: 2.5% 10%;
+       }
+       .linediv-l {
+         border-bottom: 1px white solid;
+       }
+       .linediv-r {
+         border-top: 1px white solid;
+       }
+      }
+
+      /* All form factors */
+
+      /* Main body and headings */
+      body{
+        font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+      }
+      .heading, .subheading {
+        font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+        text-align: center;
+      }
+      p.lead {
+        padding-top: 1.5%;
+        font-size: 24px;
+        line-height: 30px;
+      }
+      p {
+        font-size: 18px;
+        line-height: 24px;
+      }
+
+      /* Video pitch and Action */
+      .pitch {
+        padding: 2.5% 0%;
+      }
+      .order {
+        padding: 2% 0%;
+      }
+      .actions {
+        background-color: #343434;
+        padding: 3% 0%;
+      }
+      .video, .thermometer, .order, .social, .statistics {
+        text-align: center;
+      }
+      .statistics h3, .statistics p {
+        color: white;
+      }
+
+      /* Marketing Copy and Footer */
+      .copy {
+        padding-top: 2.5%;
+        padding-bottom: 2.5%;
+        text-align: justify;
+      }
+      .asset {
+        padding: 2.5% 0%;
+      }
+      .footer {
+        color: #cccccc;
+        text-align: center;
+      }
+      .footer p {
+        font-size: 11px;
+      }
+      .footer a {
+        color: #ccccff;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Mobile-friendly navbar adapted from example. -->
+    <!-- http://twitter.github.io/bootstrap/examples/starter-template.html -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar"
+                  data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">Bitstarter</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <!-- We use row-fluid inside containers to achieve a resizable layout. -->
+    <!-- blogs.endjin.com/2013/04/tips-for-implementing-responsive-designs-using-bootstrap/ -->
+    <!-- http://stackoverflow.com/a/12270322 -->
+    <div class="container">
+      <!-- Font and paired font of .heading/.subheading and body from Google Fonts -->
+      <!-- www.google.com/fonts/specimen/Ubuntu -->
+      <!-- www.google.com/fonts/specimen/Ubuntu#pairings -->
+      <div class="row-fluid heading">
+        <div class="span12">
+          <h1>Product</h1>
+        </div>
+      </div> 
+      <div class="row-fluid subheading">
+        <div class="span12">
+          <!-- Special typography from Bootstrap for lead paragraph. -->
+          <!-- http://twitter.github.io/bootstrap/base-css.html#typography -->
+          <p class="lead">One sentence description.</p>
+        </div>
+      </div>
+      <div class="row-fluid pitch">
+        <div class="span5 offset1 video">
+          <img class="img-polaroid" src="http://placehold.it/480x300">
+        </div>
+
+        <!-- We define a new 'actions' div to contain statistics, order, and share buttons.-->
+        <div class="span5 actions">
+          <div class="span8 offset2">
+            <div class="statistics">
+              <div class="span4">
+                <!-- linediv-l and linediv-r give dividing lines that look
+                different in horizontal and vertical layouts, illustrating
+                media queries. -->
+                <div class="linediv-l">
+                <h3>1000</h3> <p>backers</p>
+                </div>
+              </div>
+              <div class="span4">
+                <div class="linediv-c">
+                  <h3>$6000</h3> <p>of $10,000</p>
+                </div>
+              </div>
+              <div class="span4">
+                <div class="linediv-r">
+                <h3>10</h3> <p>days left</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="span10 offset1">
+            <!-- Bootstrap progress bar -->
+            <!-- http://twitter.github.io/bootstrap/components.html#progress -->
+            <div class="thermometer progress active">
+              <div class="bar bar-success" style="width: 60%;"></div>
+              <div class="bar bar-warning" style="width: 40%;"></div>
+            </div>
+          </div>
+          <div class="span6 offset3 order">
+            <!-- Standard Bootstrap button. -->
+            <!-- http://twitter.github.io/bootstrap/base-css.html#buttons -->
+            <button class="btn btn-success btn-large">Preorder</button>
+          </div>
+          <div class="span8 offset2 social">
+            <!-- Social buttons are not included in default Bootstrap. -->
+            <!-- See: http://noizwaves.github.io/bootstrap-social-buttons -->
+            <button class="btn btn-twitter"><i class="icon-twitter"></i> | Twitter</button>
+            <button class="btn btn-facebook"><i class="icon-facebook"></i> | Facebook</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Beyond this part the marketing copy begins. -->
+      <!-- https://developer.mozilla.org/en-US/docs/Web/CSS/text-align -->
+      <!-- http://twitter.github.io/bootstrap/base-css.html#images -->
+      <!-- http://placehold.it -->
+      <div class="row-fluid section1">
+        <div class="span5 offset1 asset">
+          <img class="img-polaroid" src="http://placehold.it/480x300">
+        </div>
+        <div class="span5 copy">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+            porta, dui sagittis hendrerit rutrum, nunc leo tempus nisl, eu
+            mollis justo velit at nunc. Fusce nec egestas sem. Donec
+            fringilla ante lectus, a pellentesque lacus dignissim ac. Sed
+            volutpat lorem ut congue malesuada. In facilisis scelerisque
+            turpis sed lacinia. Donec in orci lectus. Donec auctor semper
+            quam, eget rhoncus purus fringilla id. Phasellus id nibh eu
+            risus ultrices adipiscing.  Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Donec porta, dui sagittis hendrerit
+            rutrum, nunc leo tempus nisl, eu mollis justo velit at
+            nunc. Fusce nec egestas sem. Donec fringilla.
+          </p>
+        </div>
+      </div>
+
+      <div class="row-fluid section2">
+        <div class="span5 offset1 copy copy-right">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+            porta, dui sagittis hendrerit rutrum, nunc leo tempus nisl, eu
+            mollis justo velit at nunc. Fusce nec egestas sem. Donec
+            fringilla ante lectus, a pellentesque lacus dignissim ac. Sed
+            volutpat lorem ut congue malesuada. In facilisis scelerisque
+            turpis sed lacinia. Donec in orci lectus. Donec auctor semper
+            quam, eget rhoncus purus fringilla id. Phasellus id nibh eu
+            risus ultrices adipiscing.  Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Donec porta, dui sagittis hendrerit
+            rutrum, nunc leo tempus nisl, eu mollis justo velit at
+            nunc. Fusce nec egestas sem. Donec fringilla.
+          </p>
+        </div>
+        <div class="span5 asset">
+          <img class="img-polaroid" src="http://placehold.it/480x300">
+        </div>
+      </div>
+
+      <!-- For the FAQ, we introduce a little bit of JS, using the accordion. -->
+      <!-- This brings in jquery.js and bootstrap.js as dependencies. -->
+      <!-- http://twitter.github.io/bootstrap/javascript.html#collapse -->
+      <div class="row-fluid faq">
+          <div class="span10 offset1">
+            <h3>FAQ</h3>
+            <div class="accordion" id="accordion2">
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" data-toggle="collapse"
+                     data-parent="#accordion2" href="#collapseOne">
+                    What does FAQ stand for?
+                  </a>
+                </div>
+                <div id="collapseOne" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    Frequently Asked Question.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-group">
+                <div class="accordion-heading">
+                  <a class="accordion-toggle" data-toggle="collapse"
+                     data-parent="#accordion2" href="#collapseTwo">
+                    What's a Frequently Asked Question?
+                  </a>
+                </div>
+                <div id="collapseTwo" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    A question which is commonly asked by users.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+      </div>
+
+      <!-- Not crucial, but we put this under a CC By-SA 3.0 license. -->
+      <!-- http://creativecommons.org/licenses/ -->
+      <div class="row-fluid footer">
+        <div class="span12">
+          <p>This work is licensed under
+            the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC
+              By-SA 3.0
+            </a>, without all the cruft that would otherwise be
+            put at the bottom of the page.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
